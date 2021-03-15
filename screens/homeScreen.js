@@ -67,12 +67,15 @@ import  HeaderBar  from './component/headerBar';
           const handleClick2 = (item) => {
             navigation.navigate('DetailList');
           }  
+          
+          const [width, setWidth] = useState(0);
+          const onLayout = (e) => setWidth(e.nativeEvent.layout.width);
 
       return (
         <View style={{flex:1}}>
             <HeaderBar/>
             <ScrollView>
-            <View style={{paddingVertical:10,backgroundColor:'#808080'}}>
+            <View style={{paddingTop:10,backgroundColor:'#808080'}} onLayout={(e) => onLayout(e)}>
                 <SliderBox images={imagesList}
                     sliderBoxHeight={150}
                     onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
