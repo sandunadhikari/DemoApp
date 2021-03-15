@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/homeScreen';
 import ListScreen from './screens/listScreen';
 import DetailsScreen from './screens/detailsScreen';
+import UtilityScreen from './screens/utilityScreen';
 import SplashScreen from 'react-native-splash-screen'
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="DetailList" component={ListScreen} />
+        <Stack.Screen name="Utility" component={UtilityScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

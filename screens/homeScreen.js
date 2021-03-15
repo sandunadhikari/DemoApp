@@ -62,10 +62,10 @@ import  HeaderBar  from './component/headerBar';
           ] );
 
           const handleClick = (item) => {
-            navigation.navigate('DetailList');
+            navigation.navigate('Utility',{ParamObject:item});
           } 
           const handleClick2 = (item) => {
-            navigation.navigate('DetailList');
+            navigation.navigate('DetailList',{ParamObject:item});
           }  
           
           const [width, setWidth] = useState(0);
@@ -86,7 +86,7 @@ import  HeaderBar  from './component/headerBar';
                     circleLoop
                     />
             </View>
-            <View style={{flexDirection:'column'}}>
+            <View style={{flexDirection:'column',paddingTop:10}}>
                 <View style={{backgroundColor:'#60ba46',height:120}}>
                     <Text style={{color:'white',fontSize:20,textAlign:'center',padding:10}}>Categories</Text>
                 </View>
