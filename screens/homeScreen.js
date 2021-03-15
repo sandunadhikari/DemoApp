@@ -62,7 +62,7 @@ import  HeaderBar  from './component/headerBar';
           ] );
 
           const handleClick = (item) => {
-            navigation.navigate('Details');
+            navigation.navigate('DetailList');
           } 
           const handleClick2 = (item) => {
             navigation.navigate('DetailList');
