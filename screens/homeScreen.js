@@ -76,7 +76,7 @@ import  HeaderBar  from './component/headerBar';
                 <SliderBox images={imagesList}
                     sliderBoxHeight={150}
                     onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
-                    dotColor="#FFEE58"
+                    dotColor="#FFFFFF"
                     inactiveDotColor="#90A4AE"
                     paginationBoxVerticalPadding={20}
                     autoplay
