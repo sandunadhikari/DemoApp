@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
 
 
@@ -46,7 +46,11 @@ const styles = StyleSheet.create({
     },
 });
 
-const CustomRow = ({ title, description, image_url, quantity }) => (
+const CustomRow = ({ title, description, image_url, quantity }) => {
+    const [count, setCount] = useState(0);
+      const onPressPlus = () => setCount(count + 1);
+      const onPressSub = () => setCount((count>0) ? (count - 1 ): 0);
+    return (
     <View style={styles.container}>
         <Image  source={{ uri: image_url }} style={styles.photo} />
         <View style={styles.container_text}>
@@ -63,7 +67,7 @@ const CustomRow = ({ title, description, image_url, quantity }) => (
         </View>
         <View style={{ marginTop: 12, marginLeft: 10, marginRight: 0 ,width: 35, alignItems: 'center'}}>
             <Text style={{left: 68, fontSize: 16}}>
-               0
+            {count ? count : 0}
             </Text>
             
         </View>
@@ -71,6 +75,7 @@ const CustomRow = ({ title, description, image_url, quantity }) => (
             <Button
             title="-"
             color="#60ba46"
+            onPress={onPressSub}
             ></Button>
             
         </View>
@@ -78,11 +83,13 @@ const CustomRow = ({ title, description, image_url, quantity }) => (
             <Button
             title="+"
             color="#60ba46"
+            onPress={onPressPlus}
             ></Button>
             
         </View>
 
     </View>
-);
+    );
+};
 
 export default CustomRow;

@@ -1,9 +1,13 @@
 
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Button,Alert, TouchableOpacity, ScrollView } from 'react-native';
 import { Card } from "react-native-elements";
+//details screen page
     
     function DetailListScreen({ route,navigation }) {
+      const [count, setCount] = useState(0);
+      const onPressPlus = () => setCount(count + 1);
+      const onPressSub = () => setCount((count>0) ? (count - 1 ): 0);
       const { ParamObject } = route.params;
 
       return (
@@ -25,16 +29,20 @@ import { Card } from "react-native-elements";
                         <View style={{flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center',marginTop:50}}>
                             <View style={{paddingHorizontal:20}}>
                                 <Text style={{fontSize:14, color: '#a6a6a6', color: '#595959'}}>{ParamObject.title}</Text>
-                                <Text style={{fontSize:30, color: '#a6a6a6',color: '#595959'}}>0 KG</Text>
+                                <View style={{flexDirection:'row'}}>
+                                    <Text style={{fontSize:30, color: '#a6a6a6',color: '#595959'}}>{count ? count : 0}</Text>
+                                    <Text style={{fontSize:30, color: '#a6a6a6',color: '#595959',marginLeft:5}}>KG</Text>
+                                </View>
+                                
                             </View>
                             <View style={{flexDirection:'row',paddingHorizontal:20}}>
                                   <View style={{ marginRight:10 ,width: 35}}>
-                                      <Button title="-" color="#5cba67"></Button>
+                                      <Button title="-" color="#5cba67" onPress={onPressSub}></Button>
                 
                                   </View>
 
                                   <View style={{marginLeft:10,width: 35}}>
-                                        <Button title="+" color="#5cba67"></Button>
+                                        <Button title="+" color="#5cba67" onPress={onPressPlus}></Button>
                 
                                   </View>
 

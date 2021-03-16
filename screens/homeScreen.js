@@ -62,28 +62,31 @@ import  HeaderBar  from './component/headerBar';
           ] );
 
           const handleClick = (item) => {
-            navigation.navigate('Details');
+            navigation.navigate('Utility',{ParamObject:item});
           } 
           const handleClick2 = (item) => {
-            navigation.navigate('DetailList');
+            navigation.navigate('DetailList',{ParamObject:item});
           }  
+          
+          const [width, setWidth] = useState(0);
+          const onLayout = (e) => setWidth(e.nativeEvent.layout.width);
 
       return (
         <View style={{flex:1}}>
             <HeaderBar/>
             <ScrollView>
-            <View style={{paddingVertical:10,backgroundColor:'#808080'}}>
+            <View style={{paddingTop:10,backgroundColor:'#808080'}} onLayout={(e) => onLayout(e)}>
                 <SliderBox images={imagesList}
                     sliderBoxHeight={150}
                     onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
-                    dotColor="#FFEE58"
+                    dotColor="#FFFFFF"
                     inactiveDotColor="#90A4AE"
                     paginationBoxVerticalPadding={20}
                     autoplay
                     circleLoop
                     />
             </View>
-            <View style={{flexDirection:'column'}}>
+            <View style={{flexDirection:'column',paddingTop:10}}>
                 <View style={{backgroundColor:'#60ba46',height:120}}>
                     <Text style={{color:'white',fontSize:20,textAlign:'center',padding:10}}>Categories</Text>
                 </View>
