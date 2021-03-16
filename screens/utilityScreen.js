@@ -31,9 +31,58 @@ const telecom = [
     },
   ];
 
+  const insurance = [
+    { 
+        key: 1,
+        title: 'Union Assurance',
+        image_url: 'https://essstr.blob.core.windows.net/uiimg/MApp/UPM/UPMN11.jpg'
+    },
+  ];
+
+  const water = [
+    { 
+        key: 1,
+        title: 'Water Bill',
+        image_url: 'https://essstr.blob.core.windows.net/uiimg/UPMN54.jpg'
+    },
+  ];
+
+  const electricity = [
+    { 
+        key: 1,
+        title: 'LECO Bill',
+        image_url: 'https://essstr.blob.core.windows.net/uiimg/UPMN53.jpg'
+    },
+    { 
+      key: 1,
+      title: 'CEB Bill',
+      image_url: 'https://essstr.blob.core.windows.net/uiimg/UPMN55.jpg'
+  },
+  ];
+
   const numColumns = 3;
 
     function utilityScreen({ route,navigation }) {
+      const { ParamObject } = route.params;
+      const [utilityList, setutilityList]= useState([]);
+      useEffect(() => {
+        switch (ParamObject.title) {
+          case "Telecom":
+            setutilityList(telecom);
+            break;
+          case "Insurance":
+            setutilityList(insurance);
+            break;
+          case "Water":
+            setutilityList(water);
+            break;
+          case "Electricity":
+            setutilityList(electricity);
+            break;
+        }
+      });
+
+
         const renderItem = ({ item, index }) => {
             if (item.empty === true) {
               return <View style={[styles.item, styles.itemInvisible]} />;
@@ -48,16 +97,16 @@ const telecom = [
             );
           };
 
-          const formatData = (telecom, numColumns) => {
-            const numberOfFullRows = Math.floor(telecom.length / numColumns);
+          const formatData = (utilityList, numColumns) => {
+            const numberOfFullRows = Math.floor(utilityList.length / numColumns);
           
-            let numberOfElementsLastRow = telecom.length - (numberOfFullRows * numColumns);
+            let numberOfElementsLastRow = utilityList.length - (numberOfFullRows * numColumns);
             while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
-                telecom.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+              utilityList.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
               numberOfElementsLastRow++;
             }
           
-            return telecom;
+            return utilityList;
           };
         
           
@@ -65,7 +114,7 @@ const telecom = [
                 <View style={{flex:1}}>
             <HeaderBar/>
               <FlatList
-                data={formatData(telecom, numColumns)}
+                data={formatData(utilityList, numColumns)}
                 style={styles.container}
                 renderItem={renderItem}
                 numColumns={numColumns}
