@@ -5,7 +5,7 @@ import cartIcon from '../../images/Home_Cart.png'
 
 const headerBar=()=> {
     return (
-      <View style={{height:120,flexDirection:'column', backgroundColor:'#60ba46',justifyContent:'center',paddingHorizontal:10}}>
+      <View style={{height:130,flexDirection:'column', backgroundColor:'#60ba46',justifyContent:'center',paddingHorizontal:10}}>
         <View style={{alignItems:'flex-end',marginVertical:10}}>
           <View style={{flexDirection:'row',paddingHorizontal:5}}>
             <Text style={{color:'white'}}>Rs. 0.00</Text>

@@ -7,12 +7,9 @@ import  HeaderBar  from './component/headerBar';
     
     function HomeScreen({ navigation }) {
         const [imagesList, setValue]= useState( [
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide2.jpg",
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide4.jpg",
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide9.jpg",
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide8.jpg", 
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide3.jpg",
-            "https://essstr.blob.core.windows.net/uiimg/Carousel/Mapp_slide1.jpg"
+          require('../images/Mapp_slide1.jpg'),
+          require('../images/Mapp_slide2.jpg'),
+          require('../images/Mapp_slide8.jpg'),
           ] );
 
           const [categoriesList, setcategoriesList]= useState( [
@@ -75,7 +72,7 @@ import  HeaderBar  from './component/headerBar';
         <View style={{flex:1}}>
             <HeaderBar/>
             <ScrollView>
-            <View style={{paddingTop:10,backgroundColor:'#808080'}} onLayout={(e) => onLayout(e)}>
+            <View style={{paddingTop:15,backgroundColor:'#808080'}} onLayout={(e) => onLayout(e)}>
                 <SliderBox images={imagesList}
                     sliderBoxHeight={150}
                     onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
@@ -84,6 +81,9 @@ import  HeaderBar  from './component/headerBar';
                     paginationBoxVerticalPadding={20}
                     autoplay
                     circleLoop
+                    imageLoadingColor='transparent'
+                    resizeMethod={'resize'}
+                    resizeMode={'cover'}
                     />
             </View>
             <View style={{flexDirection:'column',paddingTop:10}}>
@@ -91,7 +91,7 @@ import  HeaderBar  from './component/headerBar';
                     <Text style={{color:'white',fontSize:20,textAlign:'center',padding:10}}>Categories</Text>
                 </View>
                 <FlatList
-                    style={{marginTop:-90,marginBottom:10}}
+                    style={{marginTop:-90,marginBottom:20}}
                     showsHorizontalScrollIndicator={false}
                     horizontal
                     data={categoriesList}
